@@ -1,6 +1,6 @@
 # Redis-based token management and violator recording system
 ### Tech Stack
-Python, Redis, Async
+Python, Redis
 ### How to use
 This project include 3 parts: 
 1. Redis-based key-value timer record:
