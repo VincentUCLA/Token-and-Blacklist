@@ -31,7 +31,7 @@ class IP_blacklist:
         if not self.check_ip_validity(ip_address):
             return False
         current_violations = self.token_db.hget("Access_violations", ip_address)
-        print(current_violations)
+        #print(current_violations)
         if not current_violations:
             temp_json = {"violation_attempts": [get_timestamp()]}
             self.token_db.hset("Access_violations", ip_address, temp_json)
