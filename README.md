@@ -1,7 +1,7 @@
 # Redis-based token management and violator recording system
 ### Tech Stack
 Python, Redis, Async
-### Usage
+### How to use
 This project include 3 parts: 
 1. Redis-based key-value timer record:
    1. Upon initialization, you can set the Redis DB, DB name, idle time and life time. 
