@@ -2,7 +2,7 @@ from src.common import *
 
 
 class RedisTimer:
-    def __init__(self, redis_db, db_name, idle_time, life_time):
+    def __init__(self, redis_db, db_name, idle_time=120, life_time=1200):
         """
         Generates the object by parameters.
 

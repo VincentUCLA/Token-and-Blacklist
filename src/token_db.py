@@ -3,20 +3,20 @@ from src.RedisTimer import RedisTimer
 from src.common import *
 
 TOKEN_IDLETIME = 120
-TOKEN_LIFETIME = 900
+TOKEN_LIFETIME = 1200
 DEFAULT_ENTROPY = 256
 CODING = "utf-8"
 TOKEN_DB = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 
 class Token:
-    def __init__(self):
+    def __init__(self, token_db, token_idletime=120, token_lifetime=1200):
         """
         Initialization of the class
 
         :return: Nothing
         """
-        self.RT = RedisTimer(TOKEN_DB, "Access_tokens", TOKEN_IDLETIME, TOKEN_LIFETIME)
+        self.RT = RedisTimer(token_db, "Access_tokens", token_idletime, token_lifetime)
 
     def generate_access_token(self, user_id, ip_address, user_agent):
         """

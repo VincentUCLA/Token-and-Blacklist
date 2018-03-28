@@ -2,6 +2,18 @@
 ### Tech Stack
 Python, Redis, Async
 ### Usage
+This project include 3 parts: 
+1. Redis-based key-value timer record:
+   1. Upon initialization, you can set the Redis DB, DB name, idle time and life time. 
+   2. All key-value pair will expire if not extended within idle time, and after life time.
+   3. Upon generation of key-value pair, it is allowed to include other information as JSON format in the parameter of _value_
+2. Token management system based on 1
+   1. The thing added to 1 is we record the clients' IP addresses and user-agent to identify it is unique.
+3. Redis-based IP blacklist system.
+   1. Upon initialization, you can set Redis DB, violation limit within a certain period, and block time.
+   2. After the attacker exceeds the violation limit within a certain period, we block it for a certain time. 
+
+The core functions were thoroughly tested by test scripts. The source code is very well-commented and serves as document. 
 
 ### Design
 #### Real-world problem

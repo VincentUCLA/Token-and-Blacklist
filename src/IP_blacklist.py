@@ -4,7 +4,7 @@ CODING = "utf-8"
 
 
 class IP_blacklist:
-    def __init__(self, token_db, violation_limit, violation_period, block_time):
+    def __init__(self, token_db, violation_limit=5, violation_period=1200, block_time=7200):
         """
         Set all initial parameters
 
@@ -15,7 +15,7 @@ class IP_blacklist:
         """
         self.token_db = token_db
         self.violation_limit = violation_limit
-        self.violation_lifetime = violation_period
+        self.violation_period = violation_period
         self.block_time = block_time
 
     def violate(self, ip_address):
@@ -44,7 +44,7 @@ class IP_blacklist:
 
         # Pop out all expired violations
         while temp_json["violation_attempts"] \
-                and now - temp_json["violation_attempts"][0] > self.violation_lifetime:
+                and now - temp_json["violation_attempts"][0] > self.violation_period:
             del temp_json["violation_attempts"][0]
 
         # Store the modified violation list
